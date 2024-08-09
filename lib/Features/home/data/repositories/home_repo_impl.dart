@@ -21,7 +21,6 @@ class HomeRepoImpl extends HomeRepository {
       if (books.isNotEmpty) {
         return right(books);
       }
-
       books = await homeRemoteDataSource.fetchFeaturedBooks();
       return right(books);
     } catch (e) {
@@ -40,7 +39,6 @@ class HomeRepoImpl extends HomeRepository {
       if (books.isNotEmpty) {
         return right(books);
       }
-
       books = await homeRemoteDataSource.fetchNewestBooks();
       return right(books);
     } catch (e) {
