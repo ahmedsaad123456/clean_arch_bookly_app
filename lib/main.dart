@@ -20,9 +20,18 @@ void main() async {
   Hive.registerAdapter(BookEntityAdapter());
   setupServiceLocator();
 
+ // Open the Hive boxes
+  // var featuredBox = await Hive.openBox<BookEntity>(kFeaturedBox);
+  // var newestBox = await Hive.openBox<BookEntity>(kNewestBox);
+
   await Hive.openBox<BookEntity>(kFeaturedBox);
   await Hive.openBox<BookEntity>(kNewestBox);
-      Bloc.observer = BlocsObserver();
+
+  // Clear the data in the Hive boxes
+  // await featuredBox.clear();
+  // await newestBox.clear();
+      
+  Bloc.observer = BlocsObserver();
 
   runApp(const Bookly());
 
