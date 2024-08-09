@@ -5,11 +5,10 @@ import 'package:bookly/Features/home/domain/usecases/fetch_newest_books_use_case
 import 'package:bookly/Features/home/presentation/manager/featured_books_cubit/featured_books_cubit.dart';
 import 'package:bookly/Features/home/presentation/manager/newest_books_cubit/newest_books_cubit.dart';
 import 'package:bookly/constants.dart';
-import 'package:bookly/core/utils/app_router.dart';
+import 'package:bookly/core/utils/blocs_observer.dart';
 import 'package:bookly/core/utils/functions/setup_service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/adapters.dart';
 
 void main() async {
@@ -20,6 +19,7 @@ void main() async {
 
   await Hive.openBox<BookEntity>(kFeaturedBox);
   await Hive.openBox<BookEntity>(kNewestBox);
+      Bloc.observer = BlocsObserver();
 
   runApp(const Bookly());
 
